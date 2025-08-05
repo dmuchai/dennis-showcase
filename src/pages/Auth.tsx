@@ -19,9 +19,17 @@ const Auth = () => {
   useEffect(() => {
     // Check if user is already authenticated
     const checkAuth = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        navigate("/");
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.warn('Auth check error:', error);
+          return;
+        }
+        if (session) {
+          navigate("/");
+        }
+      } catch (err) {
+        console.warn('Auth initialization error:', err);
       }
     };
     

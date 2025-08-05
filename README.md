@@ -1,10 +1,10 @@
 # Dennis Muchai - Portfolio Website
 
-A modern, responsive portfolio website showcasing my skills, projects, and experience as a Full-Stack Web Developer. Built with React, TypeScript, Tailwind CSS, and designed for deployment on Lovable.dev.
+A modern, responsive portfolio website showcasing my skills, projects, and experience as a Full-Stack Web Developer. Built with React, TypeScript, Tailwind CSS, and deployed on Vercel.
 
 ## 🚀 Live Demo
 
-Visit the live portfolio: [dennis-portfolio.lovable.app](https://dennis-portfolio.lovable.app)
+Visit the live portfolio: [dennis-muchai.vercel.app](https://dennis-muchai.vercel.app)
 
 ## 👨‍💻 About
 
@@ -15,8 +15,9 @@ I'm Dennis Muchai, a Full-Stack Web Developer and ALX Software Engineering Progr
 - **Frontend**: React, TypeScript, Tailwind CSS
 - **UI Components**: shadcn/ui
 - **Icons**: Lucide React
-- **Deployment**: Lovable.dev
-- **Backend** (when connected): Supabase
+- **Deployment**: Vercel
+- **Backend**: Supabase
+- **Build Tool**: Vite
 
 ## 📁 Project Structure
 

@@ -9,32 +9,32 @@ const Projects = () => {
       title: "Grocery E-commerce Site",
       description: "Full-featured e-commerce platform for grocery shopping with user authentication, product management, shopping cart, and secure checkout functionality.",
       techStack: ["Flask", "Python", "PostgreSQL", "HTML/CSS", "JavaScript"],
-      githubUrl: "https://github.com/dennismuchai/grocery-ecommerce",
-      liveUrl: "https://grocery-demo.example.com",
+      githubUrl: "https://github.com/dmuchai/grocery-ecommerce",
+      liveUrl: "https://denncathy.co.ke",
       image: "🛒"
     },
     {
       title: "Rentify Kenya",
       description: "Housing rental application prototype connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
       techStack: ["React", "Supabase", "TypeScript", "Tailwind CSS"],
-      githubUrl: "https://github.com/dennismuchai/rentify-kenya",
-      liveUrl: "https://rentify-kenya.lovable.app",
+      githubUrl: "https://github.com/dmuchai/rentify-kenya",
+      liveUrl: "https://rentify-houses-kenya.vercel.app/",
       image: "🏠"
     },
     {
       title: "MoveEasy/Kenya Movers AI",
       description: "AI-powered moving service platform that connects customers with verified moving companies. Features intelligent matching, quote comparison, and booking management.",
       techStack: ["TypeScript", "Supabase", "React", "AI Integration", "Stripe"],
-      githubUrl: "https://github.com/dennismuchai/kenya-movers-ai",
+      githubUrl: "https://github.com/dmuchai/kenya-movers-ai",
       liveUrl: "https://moveeasy-kenya.lovable.app",
       image: "🚚"
     },
     {
       title: "Portfolio Website",
-      description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Lovable.dev.",
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Lovable.dev"],
-      githubUrl: "https://github.com/dennismuchai/portfolio",
-      liveUrl: "https://dennis-portfolio.lovable.app",
+      description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Vercel.",
+      techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+      githubUrl: "https://github.com/dennismuchai/dennis-showcase",
+      liveUrl: "https://dennis-muchai.vercel.app",
       image: "💼"
     }
   ];
