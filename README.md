@@ -1,73 +1,184 @@
-# Welcome to your Lovable project
+# Dennis Muchai - Portfolio Website
 
-## Project info
+A modern, responsive portfolio website showcasing my skills, projects, and experience as a Full-Stack Web Developer. Built with React, TypeScript, Tailwind CSS, and designed for deployment on Lovable.dev.
 
-**URL**: https://lovable.dev/projects/e9e03aa9-2299-4c8e-806d-c132f1b8c6cb
+## 🚀 Live Demo
 
-## How can I edit this code?
+Visit the live portfolio: [dennis-portfolio.lovable.app](https://dennis-portfolio.lovable.app)
 
-There are several ways of editing your application.
+## 👨‍💻 About
 
-**Use Lovable**
+I'm Dennis Muchai, a Full-Stack Web Developer and ALX Software Engineering Program graduate. I specialize in building modern, scalable web applications using technologies like React, Supabase, TypeScript, and more.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e9e03aa9-2299-4c8e-806d-c132f1b8c6cb) and start prompting.
+## 🛠️ Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Deployment**: Lovable.dev
+- **Backend** (when connected): Supabase
 
-**Use your preferred IDE**
+## 📁 Project Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```
+src/
+├── components/
+│   ├── Portfolio/
+│   │   ├── Hero.tsx          # Landing section with intro
+│   │   ├── Projects.tsx      # Project showcase
+│   │   ├── About.tsx         # About me & skills
+│   │   ├── Contact.tsx       # Contact form
+│   │   ├── Navigation.tsx    # Top navigation
+│   │   └── Footer.tsx        # Footer section
+│   └── ui/                   # Reusable UI components
+├── assets/                   # Images and static files
+└── pages/
+    └── Index.tsx             # Main page layout
+```
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🎨 Features
 
-Follow these steps:
+- **Responsive Design**: Optimized for mobile, tablet, and desktop
+- **Dark Mode Toggle**: Light/dark theme switching
+- **Smooth Scrolling**: Navigation with smooth scroll effects
+- **Modern UI**: Clean, professional design with animations
+- **SEO Optimized**: Proper meta tags and structured content
+- **Contact Form**: Ready for Supabase integration
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🔧 Setup & Development
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd portfolio-website
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+4. Open [http://localhost:8080](http://localhost:8080) in your browser
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📝 Customization Guide
 
-**Use GitHub Codespaces**
+### Updating Personal Information
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. **Hero Section** (`src/components/Portfolio/Hero.tsx`):
+   - Update name, title, and description
+   - Replace social media links
+   - Update profile photo path
 
-## What technologies are used for this project?
+2. **Projects Section** (`src/components/Portfolio/Projects.tsx`):
+   - Modify the `projects` array with your own projects
+   - Update GitHub and live demo URLs
+   - Add/remove tech stack items
 
-This project is built with:
+3. **About Section** (`src/components/Portfolio/About.tsx`):
+   - Update bio and experience highlights
+   - Modify skills categories and items
+   - Customize experience timeline
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+4. **Contact Information** (`src/components/Portfolio/Contact.tsx`):
+   - Update email, phone, and location
+   - Modify contact form fields if needed
 
-## How can I deploy this project?
+### Adding New Projects
 
-Simply open [Lovable](https://lovable.dev/projects/e9e03aa9-2299-4c8e-806d-c132f1b8c6cb) and click on Share -> Publish.
+In `src/components/Portfolio/Projects.tsx`, add new project objects to the `projects` array:
 
-## Can I connect a custom domain to my Lovable project?
+```typescript
+{
+  title: "Your Project Name",
+  description: "Brief description of your project",
+  techStack: ["React", "Node.js", "MongoDB"],
+  githubUrl: "https://github.com/username/project",
+  liveUrl: "https://your-project.com",
+  image: "🚀" // Emoji or image path
+}
+```
 
-Yes, you can!
+### Supabase Integration
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+To enable the contact form with database storage:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Connect your Lovable project to Supabase using the green Supabase button
+2. The contact form will automatically store submissions in your Supabase database
+3. Update the form submission logic in `Contact.tsx` once connected
+
+### Styling Customization
+
+- **Colors**: Modify color scheme in `src/index.css` (CSS variables)
+- **Fonts**: Update font families in Tailwind config
+- **Animations**: Customize transitions and animations in component files
+
+## 🚀 Deployment
+
+This project is optimized for deployment on Lovable.dev:
+
+1. Click the "Publish" button in the Lovable editor
+2. Your site will be available at `your-project.lovable.app`
+3. Connect a custom domain in Project Settings if desired
+
+## 📱 Responsive Breakpoints
+
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+## 🎯 Performance Features
+
+- **Lazy Loading**: Images and components load on demand
+- **Code Splitting**: Optimized bundle sizes
+- **Fast Navigation**: Smooth scroll and optimized animations
+- **SEO Ready**: Meta tags, proper heading structure
+
+## 📧 Contact Form Backend
+
+The contact form is ready for Supabase integration. Once connected:
+
+- Form submissions will be stored in a Supabase table
+- Email notifications can be set up via Supabase Edge Functions
+- Form validation and error handling included
+
+## 🔒 Security
+
+- Form validation on both client and server side (when Supabase connected)
+- Secure handling of sensitive data
+- Protected API endpoints (when backend connected)
+
+## 📈 Future Enhancements
+
+- [ ] Blog section integration
+- [ ] Project filtering and search
+- [ ] Animation improvements
+- [ ] Performance monitoring
+- [ ] Analytics integration
+
+## 🤝 Contributing
+
+This is a personal portfolio, but feel free to:
+- Report bugs or issues
+- Suggest improvements
+- Use as a template for your own portfolio
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+**Built with ❤️ using React, TypeScript, and Lovable.dev**
+
+For questions or collaboration opportunities, feel free to [contact me](mailto:dennis@example.com)!
