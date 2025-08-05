@@ -8,7 +8,7 @@ const Navigation = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { user, signOut } = useAuth();
+  const { user, signOut, error } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
