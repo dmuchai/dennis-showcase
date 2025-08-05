@@ -17,7 +17,7 @@ const Projects = () => {
       title: "Rentify Kenya",
       description: "Housing rental application prototype connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
       techStack: ["React", "Supabase", "TypeScript", "Tailwind CSS"],
-      githubUrl: "https://github.com/dmuchai/rentify-kenya",
+      githubUrl: "https://github.com/dmuchai/rentify-houses-kenya",
       liveUrl: "https://rentify-houses-kenya.vercel.app/",
       image: "🏠"
     },
@@ -34,7 +34,7 @@ const Projects = () => {
       description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Vercel.",
       techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
       githubUrl: "https://github.com/dennismuchai/dennis-showcase",
-      liveUrl: "https://dennis-muchai.vercel.app",
+      liveUrl: "https://dennis-muchai-portfolio.vercel.app",
       image: "💼"
     }
   ];
