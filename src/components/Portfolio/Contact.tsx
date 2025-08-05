@@ -51,19 +51,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "dennis@example.com",
-      href: "mailto:dennis@example.com"
+      value: "dmmuchai@gmail.com",
+      href: "mailto:dmmuchai@gmail.com"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+254 700 000 000",
-      href: "tel:+254700000000"
+      value: "+254 710583121",
+      href: "tel:+254710583121"
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Nairobi, Kenya",
+      value: "Getathuru Road, Nairobi, Kenya",
       href: null
     }
   ];
