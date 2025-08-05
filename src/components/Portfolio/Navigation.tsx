@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Menu, X } from "lucide-react";
+import { Moon, Sun, Menu, X, LogOut, User } from "lucide-react";
+import { useAuth } from "@/hooks/useAuth";
 
 const Navigation = () => {
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -67,8 +70,35 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Right Side - Theme Toggle + Mobile Menu */}
-          <div className="flex items-center gap-4">
+          {/* Right Side - Auth, Theme Toggle + Mobile Menu */}
+          <div className="flex items-center gap-2">
+            {user ? (
+              <>
+                <div className="hidden md:flex items-center gap-2 text-sm text-foreground/80">
+                  <User className="w-4 h-4" />
+                  {user.email}
+                </div>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={signOut}
+                  className="hidden md:flex items-center gap-2"
+                >
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              </>
+            ) : (
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                className="hidden md:flex"
+              >
+                <Link to="/auth">Sign In</Link>
+              </Button>
+            )}
+            
             <Button
               variant="ghost"
               size="sm"
@@ -111,6 +141,36 @@ const Navigation = () => {
                   {item.name}
                 </button>
               ))}
+              
+              {/* Mobile Auth Section */}
+              <div className="pt-4 border-t border-border">
+                {user ? (
+                  <>
+                    <div className="flex items-center gap-2 text-sm text-foreground/80 pb-2">
+                      <User className="w-4 h-4" />
+                      {user.email}
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={signOut}
+                      className="flex items-center gap-2 w-full justify-start"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Sign Out
+                    </Button>
+                  </>
+                ) : (
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="sm"
+                    className="w-full"
+                  >
+                    <Link to="/auth">Sign In</Link>
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         )}
