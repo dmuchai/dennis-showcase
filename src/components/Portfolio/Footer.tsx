@@ -80,7 +80,7 @@ const Footer = () => {
               © {currentYear} Dennis Muchai. All rights reserved.
             </p>
             <p className="text-muted-foreground text-sm flex items-center gap-1">
-              Built with <Heart className="w-4 h-4 text-red-500" /> using React & Lovable.dev
+              Built with <Heart className="w-4 h-4 text-red-500" /> using React & TypeScript
             </p>
           </div>
         </div>

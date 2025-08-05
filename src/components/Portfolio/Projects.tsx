@@ -31,10 +31,10 @@ const Projects = () => {
     },
     {
       title: "Portfolio Website",
-      description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Lovable.dev.",
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Lovable.dev"],
-      githubUrl: "https://github.com/dennismuchai/portfolio",
-      liveUrl: "https://dennis-portfolio.lovable.app",
+      description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Vercel.",
+      techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+      githubUrl: "https://github.com/dennismuchai/dennis-showcase",
+      liveUrl: "https://dennis-muchai.vercel.app",
       image: "💼"
     }
   ];
