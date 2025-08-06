@@ -36,7 +36,7 @@ const Hero = () => {
           {/* Social Links */}
           <div className="flex gap-6 justify-center lg:justify-start">
             <a 
-              href="https://github.com/dennismuchai" 
+              href="https://github.com/dmuchai" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"

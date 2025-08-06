@@ -48,7 +48,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-foreground">Connect</h4>
             <div className="flex gap-4">
               <a 
-                href="https://github.com/dennismuchai" 
+                href="https://github.com/dmuchai" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
