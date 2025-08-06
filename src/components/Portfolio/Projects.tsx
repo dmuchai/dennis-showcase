@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
 
-// Cache-busting update: 2024-12-28T15:30:00Z
+// Cache-busting update: 2024-12-28T15:45:00Z - FORCE REFRESH
 const Projects = () => {
   const projects = [
     {
