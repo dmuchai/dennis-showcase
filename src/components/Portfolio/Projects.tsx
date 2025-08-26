@@ -27,7 +27,7 @@ const Projects = () => {
       description: "AI-powered moving service platform that connects customers with verified moving companies. Features intelligent matching, quote comparison, and booking management.",
       techStack: ["TypeScript", "Supabase", "React", "AI Integration", "Stripe"],
       githubUrl: "https://github.com/dmuchai/kenya-movers-ai",
-      liveUrl: "https://moveeasy-kenya.lovable.app",
+      liveUrl: "http://kenya-movers-ai.vercel.app/",
       image: "🚚"
     },
     {
