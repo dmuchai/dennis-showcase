@@ -35,7 +35,7 @@ const Projects = () => {
       description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Vercel.",
       techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
       githubUrl: "https://github.com/dmuchai/dennis-showcase",
-      liveUrl: "https://dennis-muchai-portfolio.vercel.app",
+      liveUrl: "https://dennis-muchai.vercel.app",
       image: "💼"
     }
   ];
