@@ -3,6 +3,19 @@ import { Github, Linkedin, Mail, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const Hero = () => {
+  // Handle email contact
+  const handleContactMe = () => {
+    window.location.href = "mailto:dmmuchai@gmail.com?subject=Portfolio Contact&body=Hi Dennis, I'd like to get in touch regarding...";
+  };
+
+  // Handle CV download using Google Drive link
+  const handleDownloadCV = () => {
+    // Convert Google Drive view link to direct download link
+    const fileId = "1v-t7WJOyEQb2RXw4dndT7Cwz0_bdnlu0";
+    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+    window.open(downloadUrl, '_blank');
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/10 px-4">
       <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -13,21 +26,35 @@ const Hero = () => {
               Dennis Muchai
             </h1>
             <h2 className="text-xl md:text-2xl text-muted-foreground">
-              Full-Stack Web Developer
+              Software Engineer
             </h2>
             <p className="text-lg text-foreground/80 max-w-lg mx-auto lg:mx-0">
-              ALX Software Engineering Program graduate passionate about creating modern, 
-              scalable web applications using React, Supabase, and cutting-edge technologies.
+              Software Engineer with a strong foundation in full-stack web development 
+              through the ALX Software Engineering Plus Program. Skilled in building scalable 
+              applications using modern technologies including JavaScript, React, Node.js, Next.js, 
+              Supabase, and PostgreSQL. Transitioning from a successful career in banking, where I 
+              developed expertise in problem-solving, client relationship management, and risk analysis. 
+              Passionate about leveraging technology to create impactful digital solutions.
             </p>
           </div>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Button variant="hero" size="lg" className="group">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="group"
+              onClick={handleContactMe}
+            >
               <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
               Contact Me
             </Button>
-            <Button variant="outline" size="lg" className="group">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="group"
+              onClick={handleDownloadCV}
+            >
               <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               Download CV
             </Button>
@@ -52,7 +79,7 @@ const Hero = () => {
               <Linkedin className="w-6 h-6 text-foreground" />
             </a>
             <a 
-              href="mailto:dennis@example.com"
+              href="mailto:dmmuchai@gmail.com"
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
             >
               <Mail className="w-6 h-6 text-foreground" />
@@ -66,7 +93,7 @@ const Hero = () => {
             <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1">
               <img
                 src={profilePhoto}
-                alt="Dennis Muchai - Full-Stack Developer"
+                alt="Dennis Muchai - Software Engineer"
                 className="w-full h-full rounded-full object-cover bg-background"
               />
             </div>
