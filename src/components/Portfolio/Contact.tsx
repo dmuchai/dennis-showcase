@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -51,19 +51,15 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "dmmuchai@gmail.com",
-      href: "mailto:dmmuchai@gmail.com"
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+254 710583121",
-      href: "tel:+254710583121"
+      value: "Available via contact form",
+      description: "Fill out the form below and I'll get back to you within 24 hours",
+      href: null
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "Getathuru Road, Nairobi, Kenya",
+      value: "Nairobi, Kenya",
+      description: "Available for remote opportunities globally",
       href: null
     }
   ];
@@ -98,17 +94,22 @@ const Contact = () => {
               {contactInfo.map((info, index) => {
                 const IconComponent = info.icon;
                 const content = (
-                  <div className="flex items-center gap-4 p-4 rounded-lg border bg-card hover:shadow-card transition-all duration-300 group">
+                  <div className="flex items-start gap-4 p-4 rounded-lg border bg-card hover:shadow-card transition-all duration-300 group">
                     <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                       <IconComponent className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground">
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-muted-foreground mb-1">
                         {info.label}
                       </p>
-                      <p className="text-foreground font-medium">
+                      <p className="text-foreground font-medium mb-1">
                         {info.value}
                       </p>
+                      {info.description && (
+                        <p className="text-sm text-muted-foreground">
+                          {info.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );

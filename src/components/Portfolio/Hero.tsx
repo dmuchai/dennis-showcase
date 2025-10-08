@@ -1,11 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Mail, Download } from "lucide-react";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
 
 const Hero = () => {
-  // Handle email contact
+  // Obfuscated email to prevent bot scraping
+  const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
+  
+  // Handle email contact with obfuscation
   const handleContactMe = () => {
-    window.location.href = "mailto:dmmuchai@gmail.com?subject=Portfolio Contact&body=Hi Dennis, I'd like to get in touch regarding...";
+    const mailtoLink = createMailtoLink(
+      obfuscatedEmail,
+      "Portfolio Contact",
+      "Hi Dennis, I'd like to get in touch regarding..."
+    );
+    window.location.href = mailtoLink;
   };
 
   // Handle CV download using Google Drive link
@@ -67,6 +76,7 @@ const Hero = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
+              aria-label="GitHub Profile"
             >
               <Github className="w-6 h-6 text-foreground" />
             </a>
@@ -75,15 +85,17 @@ const Hero = () => {
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
+              aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-6 h-6 text-foreground" />
             </a>
-            <a 
-              href="mailto:dmmuchai@gmail.com"
+            <button
+              onClick={handleContactMe}
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
+              aria-label="Contact via Email"
             >
               <Mail className="w-6 h-6 text-foreground" />
-            </a>
+            </button>
           </div>
         </div>
 

@@ -23,20 +23,20 @@ const Projects = () => {
       image: "🏠"
     },
     {
-      title: "MoveEasy/Kenya Movers AI",
+      title: "MoveEasy Moving Planner",
       description: "AI-powered moving service platform that connects customers with verified moving companies. Features intelligent matching, quote comparison, and booking management.",
       techStack: ["TypeScript", "Supabase", "React", "AI Integration", "Stripe"],
       githubUrl: "https://github.com/dmuchai/kenya-movers-ai",
-      liveUrl: "http://kenya-movers-ai.vercel.app/",
+      liveUrl: "https://moving-planner-ke.vercel.app/",
       image: "🚚"
     },
     {
-      title: "Portfolio Website",
-      description: "This responsive portfolio website showcasing my projects and skills, built with modern web technologies and deployed on Vercel.",
-      techStack: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-      githubUrl: "https://github.com/dmuchai/dennis-showcase",
-      liveUrl: "https://dennis-muchai.vercel.app",
-      image: "💼"
+      title: "Rent Management System",
+      description: "Comprehensive property management platform for landlords and tenants. Features rent tracking, payment management, maintenance requests, tenant communication, and automated reminders.",
+      techStack: ["React", "TypeScript", "Supabase", "Tailwind CSS", "PostgreSQL"],
+      githubUrl: "https://github.com/dmuchai/Rent-Management-System",
+      liveUrl: "https://property-manager-ke.vercel.app/",
+      image: "🏢"
     }
   ];
 

@@ -1,7 +1,15 @@
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
+  
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const mailtoLink = createMailtoLink(obfuscatedEmail, "Portfolio Contact");
+    window.location.href = mailtoLink;
+  };
 
   return (
     <footer className="bg-card border-t border-border">
@@ -63,12 +71,13 @@ const Footer = () => {
               >
                 <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
-              <a 
-                href="mailto:dmmuchai@gmail.com"
+              <button 
+                onClick={handleEmailClick}
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+                aria-label="Contact via Email"
               >
                 <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              </a>
+              </button>
             </div>
           </div>
         </div>
