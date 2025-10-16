@@ -127,13 +127,13 @@ const Contact = () => {
             </div>
 
             {/* Note about Supabase */}
-            <Card className="border-border/50 bg-muted/50">
+            {/* <Card className="border-border/50 bg-muted/50">
               <CardContent className="p-4">
                 <p className="text-sm text-muted-foreground">
                   <strong>Note:</strong> The contact form will be fully functional once Supabase is connected to store form submissions securely.
                 </p>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
 
           {/* Contact Form */}
