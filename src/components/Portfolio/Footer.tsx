@@ -64,7 +64,7 @@ const Footer = () => {
                 <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
               </a>
               <a 
-                href="https://linkedin.com/in/dennismuchai" 
+                href="https://linkedin.com/in/dmmuchai" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
