@@ -23,7 +23,7 @@ const Projects = () => {
       image: "🏠"
     },
     {
-      title: "MoveEasy Moving Planner",
+      title: "MoveLink Moving Planner",
       description: "AI-powered moving service platform that connects customers with verified moving companies. Features intelligent matching, quote comparison, and booking management.",
       techStack: ["TypeScript", "Supabase", "React", "AI Integration", "Stripe"],
       githubUrl: "https://github.com/dmuchai/kenya-movers-ai",
