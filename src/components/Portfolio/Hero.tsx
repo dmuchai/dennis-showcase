@@ -40,8 +40,7 @@ const Hero = () => {
             <p className="text-lg text-foreground/80 max-w-lg mx-auto lg:mx-0">
               Software Engineer with a strong foundation in full-stack web development 
               through the ALX Software Engineering Plus Program. Skilled in building scalable 
-              applications using modern technologies including JavaScript, React, Node.js, Next.js, 
-              Supabase, and PostgreSQL. Transitioning from a successful career in banking, where I 
+              applications using modern technologies including Python, JavaScript, React, Node.js, Next.js, MySQL, and PostgreSQL. Transitioning from a successful career in banking, where I 
               developed expertise in problem-solving, client relationship management, and risk analysis. 
               Passionate about leveraging technology to create impactful digital solutions.
             </p>
