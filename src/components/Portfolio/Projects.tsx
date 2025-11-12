@@ -18,7 +18,7 @@ const Projects = () => {
       title: "KejaLink",
       description: "Housing rental application connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
       techStack: ["React", "MySQL", "TypeScript", "Tailwind CSS"],
-      githubUrl: "https://github.com/dmuchai/rentify-houses-kenya",
+      githubUrl: "https://github.com/dmuchai/KejaLink",
       liveUrl: "https://kejalink.co.ke/",
       image: "🏠"
     },
