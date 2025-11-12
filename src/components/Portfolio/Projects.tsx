@@ -15,11 +15,11 @@ const Projects = () => {
       image: "🛒"
     },
     {
-      title: "Rentify Kenya",
-      description: "Housing rental application prototype connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
-      techStack: ["React", "Supabase", "TypeScript", "Tailwind CSS"],
+      title: "KejaLink",
+      description: "Housing rental application connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
+      techStack: ["React", "MySQL", "TypeScript", "Tailwind CSS"],
       githubUrl: "https://github.com/dmuchai/rentify-houses-kenya",
-      liveUrl: "https://rentify-houses-kenya.vercel.app",
+      liveUrl: "https://kejalink.co.ke/",
       image: "🏠"
     },
     {
