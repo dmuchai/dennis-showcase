@@ -17,12 +17,11 @@ const Hero = () => {
     window.location.href = mailtoLink;
   };
 
-  // Handle CV download using Google Drive link
+  // Handle CV download from public folder
   const handleDownloadCV = () => {
-    // Convert Google Drive view link to direct download link
-    const fileId = "1v-t7WJOyEQb2RXw4dndT7Cwz0_bdnlu0";
-    const downloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-    window.open(downloadUrl, '_blank');
+    // Open CV hosted in public folder
+    const cvUrl = '/Dennis-Muchai-CV.pdf';
+    window.open(cvUrl, '_blank');
   };
 
   return (
@@ -38,11 +37,9 @@ const Hero = () => {
               Software Engineer
             </h2>
             <p className="text-lg text-foreground/80 max-w-lg mx-auto lg:mx-0">
-              Software Engineer with a strong foundation in full-stack web development 
-              through the ALX Software Engineering Plus Program. Skilled in building scalable 
-              applications using modern technologies including Python, JavaScript, React, Node.js, Next.js, MySQL, and PostgreSQL. Transitioning from a successful career in banking, where I 
-              developed expertise in problem-solving, client relationship management, and risk analysis. 
-              Passionate about leveraging technology to create impactful digital solutions.
+              Full-stack Software Engineer leveraging 14 years of experience in Banking Operations and Risk Analysis to build secure, scalable business solutions. 
+              Specialized in developing financial technology (fintech),  property technology (PropTech), ecommerce, logistics and automated workflow systems. 
+              Expert in merging complex business logic with modern tech stacks (React, Supabase, Python, and AI integrations) to solve real-world operational problems.
             </p>
           </div>
 
