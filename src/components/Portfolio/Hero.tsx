@@ -20,7 +20,7 @@ const Hero = () => {
   // Handle CV download from public folder
   const handleDownloadCV = () => {
     // Open CV hosted in public folder
-    const cvUrl = '/Dennis-Muchai-CV.pdf';
+    const cvUrl = '/Dennis_Muchai_Software_Engineer.pdf';
     window.open(cvUrl, '_blank');
   };
 
