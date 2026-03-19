@@ -7,36 +7,36 @@ import { Github, ExternalLink } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "Grocery E-commerce Site",
-      description: "Full-featured e-commerce platform for grocery shopping with user authentication, product management, shopping cart, and secure checkout functionality.",
-      techStack: ["Flask", "Python", "PostgreSQL", "HTML/CSS", "JavaScript"],
-      githubUrl: "https://github.com/dmuchai/grocery-ecommerce",
-      liveUrl: "https://denncathy.co.ke",
-      image: "🛒"
-    },
-    {
       title: "KejaLink",
-      description: "Housing rental application connecting landlords with tenants. Features property listings, search filters, user profiles, and messaging system.",
-      techStack: ["React", "MySQL", "TypeScript", "Tailwind CSS"],
-      githubUrl: "https://github.com/dmuchai/KejaLink",
+      description: "Marketplace connecting landlords and tenants with property listings, discovery filters, and messaging.",
+      techStack: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+      githubUrl: "https://github.com/dmuchai/kejalink",
       liveUrl: "https://kejalink.co.ke/",
       image: "🏠"
     },
     {
+      title: "Landee",
+      description: "Property management platform for rent tracking, tenant administration, and operational visibility.",
+      techStack: ["React", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS"],
+      githubUrl: "https://github.com/dmuchai/rent-management-system",
+      liveUrl: "https://landee.kejalink.co.ke",
+      image: "🏢"
+    },
+    {
       title: "MoveLink Moving Planner",
-      description: "AI-powered moving service platform that connects customers with verified moving companies. Features intelligent matching, quote comparison, and booking management.",
-      techStack: ["TypeScript", "Supabase", "React", "AI Integration", "Stripe"],
+      description: "AI-powered relocation platform that helps users compare movers, generate estimates, and plan end-to-end moves.",
+      techStack: ["React", "TypeScript", "Supabase", "AI Integration", "Stripe"],
       githubUrl: "https://github.com/dmuchai/kenya-movers-ai",
       liveUrl: "https://moving-planner-ke.vercel.app/",
       image: "🚚"
     },
     {
-      title: "Rent Management System",
-      description: "Comprehensive property management platform for landlords and tenants. Features rent tracking, payment management, maintenance requests, tenant communication, and automated reminders.",
-      techStack: ["React", "TypeScript", "Supabase", "Tailwind CSS", "PostgreSQL"],
-      githubUrl: "https://github.com/dmuchai/Rent-Management-System",
-      liveUrl: "https://property-manager-ke.vercel.app/",
-      image: "🏢"
+      title: "Denncathy Fresh Basket",
+      description: "E-commerce platform with product catalog, cart flows, and integrated payment support for M-Pesa and cards.",
+      techStack: ["Flask", "Python", "PostgreSQL", "REST APIs", "JavaScript"],
+      githubUrl: "https://github.com/dmuchai/grocery-ecommerce",
+      liveUrl: "https://denncathy.co.ke",
+      image: "🛒"
     }
   ];
 
@@ -48,8 +48,8 @@ const Projects = () => {
             Featured Projects
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A showcase of my recent work in full-stack development, featuring modern web applications 
-            built with React, Supabase, and other cutting-edge technologies.
+            Selected products spanning property technology, logistics, and e-commerce,
+            built with modern full-stack tools and AI-assisted workflows.
           </p>
         </div>
 

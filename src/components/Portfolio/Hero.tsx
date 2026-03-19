@@ -4,7 +4,7 @@ import profilePhoto from "@/assets/profile-photo.jpg";
 import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
 
 const Hero = () => {
-  // Obfuscated email to prevent bot scraping
+  // Obfuscated email to reduce direct scraping from static markup
   const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
   
   // Handle email contact with obfuscation
@@ -20,7 +20,7 @@ const Hero = () => {
   // Handle CV download from public folder
   const handleDownloadCV = () => {
     // Open CV hosted in public folder
-    const cvUrl = '/Dennis_Muchai_Software_Engineer.pdf';
+    const cvUrl = "/Dennis_Muchai_CV.pdf";
     window.open(cvUrl, '_blank');
   };
 
@@ -34,12 +34,12 @@ const Hero = () => {
               Dennis Muchai
             </h1>
             <h2 className="text-xl md:text-2xl text-muted-foreground">
-              Software Engineer
+              Software Engineer | AI-Enabled Full-Stack Developer
             </h2>
             <p className="text-lg text-foreground/80 max-w-lg mx-auto lg:mx-0">
-              Full-stack Software Engineer leveraging 14 years of experience in Banking Operations and Risk Analysis to build secure, scalable business solutions. 
-              Specialized in developing financial technology (fintech),  property technology (PropTech), ecommerce, logistics and automated workflow systems. 
-              Expert in merging complex business logic with modern tech stacks (React, Supabase, Python, and AI integrations) to solve real-world operational problems.
+              I build scalable web platforms and AI-powered marketplaces using React, Node.js,
+              Supabase, and PostgreSQL. Strong in AI-assisted development, automation workflows,
+              and shipping practical products that solve real business problems.
             </p>
           </div>
 
@@ -77,7 +77,7 @@ const Hero = () => {
               <Github className="w-6 h-6 text-foreground" />
             </a>
             <a 
-              href="https://linkedin.com/in/dennismuchai" 
+              href="https://linkedin.com/in/dmmuchai" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"

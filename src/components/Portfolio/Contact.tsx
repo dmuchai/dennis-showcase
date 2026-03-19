@@ -4,10 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
+  const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -26,20 +29,29 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // TODO: This will be implemented once Supabase is connected
-      // For now, we'll simulate the submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const { error } = await supabase
+        .from("contact_submissions")
+        .insert({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          message: formData.message.trim(),
+        });
+
+      if (error) {
+        throw error;
+      }
       
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for your message. I'll get back to you soon.",
+        description: "Thank you for your message. Your submission has been saved and I'll get back to you soon.",
       });
       
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Unknown error";
       toast({
-        title: "Error sending message",
-        description: "Please try again or contact me directly via email.",
+        title: "Error saving message",
+        description: `Please try again or contact me directly via email. (${errorMessage})`,
         variant: "destructive",
       });
     } finally {
@@ -51,9 +63,16 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "Available via contact form",
-      description: "Fill out the form below and I'll get back to you within 24 hours",
-      href: null
+      value: "dmmuchai@gmail.com",
+      description: "Best for project inquiries and collaboration opportunities",
+      href: createMailtoLink(obfuscatedEmail, "Portfolio Contact")
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+254 710 583121",
+      description: "Available during East Africa business hours",
+      href: "tel:+254710583121"
     },
     {
       icon: MapPin,
@@ -126,14 +145,13 @@ const Contact = () => {
               })}
             </div>
 
-            {/* Note about Supabase */}
-            {/* <Card className="border-border/50 bg-muted/50">
+            <Card className="border-border/50 bg-muted/50">
               <CardContent className="p-4">
                 <p className="text-sm text-muted-foreground">
-                  <strong>Note:</strong> The contact form will be fully functional once Supabase is connected to store form submissions securely.
+                  Messages are stored securely in Supabase and reviewed regularly.
                 </p>
               </CardContent>
-            </Card> */}
+            </Card>
           </div>
 
           {/* Contact Form */}

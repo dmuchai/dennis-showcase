@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
 import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
 
@@ -5,7 +6,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
   
-  const handleEmailClick = (e: React.MouseEvent) => {
+  const handleEmailClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const mailtoLink = createMailtoLink(obfuscatedEmail, "Portfolio Contact");
     window.location.href = mailtoLink;
@@ -21,8 +22,8 @@ const Footer = () => {
               Dennis Muchai
             </h3>
             <p className="text-muted-foreground leading-relaxed">
-              Full-Stack Web Developer passionate about creating modern, 
-              scalable applications that make a difference.
+              Software Engineer building scalable web platforms and AI-powered
+              products with React, Node.js, and Supabase.
             </p>
           </div>
 

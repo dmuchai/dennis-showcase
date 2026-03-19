@@ -4,10 +4,10 @@ import { Code, Database, Globe, Zap } from "lucide-react";
 
 const About = () => {
   const skills = [
-    { category: "Frontend", icon: Globe, items: ["React", "Redux", "TypeScript", "Tailwind CSS", "HTML/CSS", "JavaScript"] },
-    { category: "Backend", icon: Database, items: ["Node.js", "Flask", "Python", "PostgreSQL", "Supabase", "Firebase"] },
-    { category: "Tools", icon: Code, items: ["Git", "VS Code", "Docker", "Vercel", "Lovable.dev", "Postman"] },
-    { category: "Concepts", icon: Zap, items: ["Full-Stack Development", "REST APIs", "Database Design", "Responsive Design", "Version Control"] }
+    { category: "Frontend", icon: Globe, items: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML/CSS"] },
+    { category: "Backend", icon: Database, items: ["Node.js", "Flask", "Python", "REST APIs"] },
+    { category: "Database & Cloud", icon: Code, items: ["PostgreSQL", "Supabase", "Firebase", "Vercel", "Supabase Auth"] },
+    { category: "AI & Delivery", icon: Zap, items: ["Prompt Engineering", "LLM Integrations", "AI-Assisted Coding", "Automation Workflows", "Git", "Docker", "Stripe"] }
   ];
 
   return (
@@ -18,8 +18,9 @@ const About = () => {
             About Me
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            I'm a passionate Full-Stack Web Developer and recent graduate of the ALX Software Engineering Program. 
-            With a strong foundation in modern web technologies, I enjoy building scalable applications that solve real-world problems.
+            Software Engineer focused on scalable web applications and AI-enabled product delivery.
+            I combine strong business-domain understanding with modern full-stack engineering to
+            build practical platforms in PropTech, e-commerce, and logistics.
           </p>
         </div>
 
@@ -31,19 +32,20 @@ const About = () => {
                 <h3 className="text-2xl font-semibold text-foreground">My Journey</h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    My journey into software development began with curiosity and evolved into a passion for creating 
-                    digital solutions. Through the intensive ALX Software Engineering Program, I gained hands-on 
-                    experience with modern development practices and technologies.
+                    I transitioned from banking operations and risk-focused roles into software engineering
+                    to build the kinds of systems I used to manage manually. That shift gave me a strong
+                    product mindset grounded in operations, compliance, and reliability.
                   </p>
                   <p>
-                    I specialize in full-stack development with a focus on React-based frontend applications and 
-                    robust backend systems using technologies like Supabase, Flask, and Node.js. I'm particularly 
-                    interested in building user-centric applications that provide seamless experiences.
+                    Through ALX Software Engineering Plus and focused AI-for-developers training, I built
+                    production-style projects across React, Node.js, Flask, Supabase, and PostgreSQL.
+                    I now specialize in AI-assisted development workflows that increase delivery speed
+                    without compromising code quality.
                   </p>
                   <p>
-                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source 
-                    projects, or sharing knowledge with the developer community. I believe in continuous learning 
-                    and staying current with industry trends.
+                    My work centers on platforms that solve real-world workflow pain points: property
+                    marketplaces, rent operations, relocation planning, and online commerce.
+                    I value clean UX, measurable outcomes, and maintainable systems.
                   </p>
                 </div>
               </CardContent>
@@ -56,19 +58,19 @@ const About = () => {
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                    <span>Completed ALX Software Engineering Program with focus on full-stack development</span>
+                    <span>ALX Software Engineering Plus (2024-2025) with 20+ full-stack, cloud, and DevOps projects</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>
-                    <span>Built multiple production-ready applications using React and Supabase</span>
+                    <span>ALX AI for Developers I & II (2025): prompt engineering, agentic workflows, and AI-assisted testing</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-                    <span>Experience with database design, API development, and deployment strategies</span>
+                    <span>Family Bank Ltd (2009-2023): Senior Relationship Officer and Operations Supervisor</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>
-                    <span>Strong problem-solving skills and attention to detail in code quality</span>
+                    <span>Built and deployed products in housing, rent management, moving logistics, and e-commerce</span>
                   </li>
                 </ul>
               </CardContent>
