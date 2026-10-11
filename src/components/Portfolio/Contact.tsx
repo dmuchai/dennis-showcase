@@ -1,233 +1,249 @@
-import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
-import { supabase } from "@/integrations/supabase/client";
-
-const Contact = () => {
-  const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
+import { useState, type FormEvent } from "react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import {
+  buildEnquiryMessage,
+  buildEnquiryMailto,
+  databaseMode,
+} from "@/lib/enquiry";
+const initial = {
+  name: "",
+  email: "",
+  business: "",
+  message: "",
+  budget: "",
+  timeframe: "",
+  website: "",
+};
+export default function Contact() {
+  const [form, setForm] = useState(initial);
+  const [state, setState] = useState<
+    "idle" | "sending" | "success" | "error" | "draft"
+  >("idle");
+  const [draftHref, setDraftHref] = useState("");
+  const update = (key: keyof typeof initial, value: string) =>
+    setForm((previous) => ({ ...previous, [key]: value }));
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (state === "sending" || form.website) return;
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
+    if (!databaseMode) {
+      setDraftHref(buildEnquiryMailto(form));
+      setState("draft");
+      return;
+    }
+    setState("sending");
     try {
+      // Preserve the existing database schema by keeping context with the brief.
+      const message = buildEnquiryMessage(form);
+      const { supabase } = await import("@/integrations/supabase/client");
       const { error } = await supabase
         .from("contact_submissions")
-        .insert({
-          name: formData.name.trim(),
-          email: formData.email.trim(),
-          message: formData.message.trim(),
-        });
-
-      if (error) {
-        throw error;
-      }
-      
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for your message. Your submission has been saved and I'll get back to you soon.",
-      });
-      
-      setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Unknown error";
-      toast({
-        title: "Error saving message",
-        description: `Please try again or contact me directly via email. (${errorMessage})`,
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
+        .insert({ name: form.name.trim(), email: form.email.trim(), message });
+      if (error) throw error;
+      setState("success");
+      setForm(initial);
+    } catch {
+      setState("error");
     }
-  };
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "dmmuchai@gmail.com",
-      description: "Best for project inquiries and collaboration opportunities",
-      href: createMailtoLink(obfuscatedEmail, "Portfolio Contact")
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+254 710 583121",
-      description: "Available during East Africa business hours",
-      href: "tel:+254710583121"
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Nairobi, Kenya",
-      description: "Available for remote opportunities globally",
-      href: null
-    }
-  ];
-
+  }
   return (
-    <section id="contact" className="py-20 px-4 bg-gradient-section">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Get In Touch
+    <section id="contact" className="contact-section section">
+      <div className="shell contact-grid">
+        <div>
+          <p className="eyebrow">Let's build something useful</p>
+          <h2>
+            What would you
+            <br />
+            <span className="serif-accent">like to improve?</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. 
-            Feel free to reach out!
+          <p>
+            Tell me where things get stuck, what you want to build, or what your
+            current system is missing.
           </p>
+          <p>
+            We start with a conversation to understand the need and establish
+            fit. If there is a clear way forward, the next step is a scoped
+            proposal.
+          </p>
+          <div className="contact-direct">
+            <a href="mailto:dmmuchai@gmail.com?subject=Project%20enquiry">
+              dmmuchai@gmail.com <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href="tel:+254710583121">+254 710 583 121</a>
+            <span>Nairobi, Kenya · Working remotely</span>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-semibold mb-6 text-foreground">
-                Let's Start a Conversation
-              </h3>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Whether you have a project in mind, want to collaborate, or just want to say hello, 
-                I'd love to hear from you. I typically respond within 24 hours.
+        <div className="enquiry-card">
+          {state === "success" ? (
+            <div className="form-success" role="status">
+              <CheckCircle2 size={36} aria-hidden="true" />
+              <h3>Your enquiry has been received.</h3>
+              <p>
+                Thank you for sharing the brief. I'll review it and follow up
+                using the email address you provided.
+              </p>
+              <button className="text-link" onClick={() => setState("idle")}>
+                Send another enquiry{" "}
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </button>
+            </div>
+          ) : state === "draft" ? (
+            <div className="form-success" role="status">
+              <CheckCircle2 size={36} aria-hidden="true" />
+              <h3>Your email draft is ready.</h3>
+              <p>
+                Open it in your email app, review the details, and send it to
+                Dennis. Your enquiry has not been sent yet.
+              </p>
+              <a href={draftHref} className="button">
+                Open email draft <ArrowUpRight size={18} aria-hidden="true" />
+              </a>
+              <button className="text-link" onClick={() => setState("idle")}>
+                Edit your details
+              </button>
+              <p className="small-note">
+                No email app configured? Email dmmuchai@gmail.com directly with
+                your project brief.
               </p>
             </div>
-
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => {
-                const IconComponent = info.icon;
-                const content = (
-                  <div className="flex items-start gap-4 p-4 rounded-lg border bg-card hover:shadow-card transition-all duration-300 group">
-                    <div className="p-3 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <IconComponent className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-sm font-medium text-muted-foreground mb-1">
-                        {info.label}
-                      </p>
-                      <p className="text-foreground font-medium mb-1">
-                        {info.value}
-                      </p>
-                      {info.description && (
-                        <p className="text-sm text-muted-foreground">
-                          {info.description}
-                        </p>
-                      )}
-                    </div>
+          ) : (
+            <form onSubmit={submit}>
+              <h3>Start a project conversation</h3>
+              <p className="form-intro">
+                {databaseMode
+                  ? "A few details are enough to get started."
+                  : "Prepare an email brief to review and send in your email app."}{" "}
+                Required fields are marked *.
+              </p>
+              <fieldset disabled={state === "sending"}>
+                <div className="form-row">
+                  <div>
+                    <label htmlFor="name">Name *</label>
+                    <input
+                      id="name"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      maxLength={120}
+                      value={form.name}
+                      onChange={(e) => update("name", e.target.value)}
+                    />
                   </div>
-                );
-
-                return info.href ? (
-                  <a key={index} href={info.href} className="block">
-                    {content}
-                  </a>
-                ) : (
-                  <div key={index}>
-                    {content}
+                  <div>
+                    <label htmlFor="email">Email *</label>
+                    <input
+                      id="email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      maxLength={254}
+                      value={form.email}
+                      onChange={(e) => update("email", e.target.value)}
+                    />
                   </div>
-                );
-              })}
-            </div>
-
-            <Card className="border-border/50 bg-muted/50">
-              <CardContent className="p-4">
-                <p className="text-sm text-muted-foreground">
-                  Messages are stored securely in Supabase and reviewed regularly.
+                </div>
+                <label htmlFor="business">
+                  Business name <span>(optional)</span>
+                </label>
+                <input
+                  id="business"
+                  name="business"
+                  autoComplete="organization"
+                  maxLength={200}
+                  value={form.business}
+                  onChange={(e) => update("business", e.target.value)}
+                />
+                <label htmlFor="message">
+                  What would you like to improve? *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  maxLength={databaseMode ? 5000 : 1500}
+                  rows={5}
+                  placeholder="Describe the problem, idea, or workflow you have in mind."
+                  value={form.message}
+                  onChange={(e) => update("message", e.target.value)}
+                />
+                <div className="form-row">
+                  <div>
+                    <label htmlFor="budget">
+                      Budget <span>(optional)</span>
+                    </label>
+                    <select
+                      id="budget"
+                      name="budget"
+                      value={form.budget}
+                      onChange={(e) => update("budget", e.target.value)}
+                    >
+                      <option value="">Select a range</option>
+                      <option>Below KES 50,000</option>
+                      <option>KES 50,000–150,000</option>
+                      <option>KES 150,000–500,000</option>
+                      <option>Above KES 500,000</option>
+                      <option>Let's discuss</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="timeframe">
+                      Timeframe <span>(optional)</span>
+                    </label>
+                    <input
+                      id="timeframe"
+                      name="timeframe"
+                      maxLength={100}
+                      placeholder="e.g. Within three months"
+                      value={form.timeframe}
+                      onChange={(e) => update("timeframe", e.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="form-trap" aria-hidden="true">
+                  <label htmlFor="website">Website</label>
+                  <input
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={form.website}
+                    onChange={(e) => update("website", e.target.value)}
+                  />
+                </div>
+                <p className="privacy-note">
+                  {databaseMode
+                    ? "Your details will be used to respond to this enquiry."
+                    : "This form prepares a draft. You send it from your email app."}{" "}
+                  <a href="/privacy">Read the enquiry privacy notice.</a>
                 </p>
-              </CardContent>
-            </Card>
-          </div>
-
-          {/* Contact Form */}
-          <Card className="border-border/50 hover:shadow-card transition-all duration-300">
-            <CardHeader>
-              <CardTitle className="text-xl text-foreground">Send me a message</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your full name"
-                    required
-                    className="border-border/50 focus:border-primary transition-colors"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="your.email@example.com"
-                    required
-                    className="border-border/50 focus:border-primary transition-colors"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Tell me about your project or just say hello..."
-                    rows={5}
-                    required
-                    className="border-border/50 focus:border-primary transition-colors resize-none"
-                  />
-                </div>
-
-                <Button 
-                  type="submit" 
-                  variant="gradient" 
-                  size="lg" 
-                  disabled={isSubmitting}
-                  className="w-full group"
+                <button
+                  className="button"
+                  type="submit"
+                  disabled={state === "sending"}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      Send Message
-                    </>
-                  )}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                  {state === "sending"
+                    ? "Sending…"
+                    : databaseMode
+                      ? "Send project enquiry"
+                      : "Prepare email enquiry"}
+                  <ArrowUpRight size={18} aria-hidden="true" />
+                </button>
+              </fieldset>
+              {state === "error" && (
+                <p role="alert" className="form-error">
+                  Your enquiry could not be saved. Your details are still here.
+                  Please try again or{" "}
+                  <a href="mailto:dmmuchai@gmail.com?subject=Project%20enquiry">
+                    email me directly
+                  </a>
+                  .
+                </p>
+              )}
+            </form>
+          )}
         </div>
       </div>
     </section>
   );
-};
-
-export default Contact;
+}
