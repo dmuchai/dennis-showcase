@@ -1,118 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
-import { createMailtoLink, obfuscateEmail } from "@/lib/obfuscate";
-
-const Hero = () => {
-  // Obfuscated email to reduce direct scraping from static markup
-  const obfuscatedEmail = obfuscateEmail("dmmuchai@gmail.com");
-  
-  // Handle email contact with obfuscation
-  const handleContactMe = () => {
-    const mailtoLink = createMailtoLink(
-      obfuscatedEmail,
-      "Portfolio Contact",
-      "Hi Dennis, I'd like to get in touch regarding..."
-    );
-    window.location.href = mailtoLink;
-  };
-
-  // Handle CV download from public folder
-  const handleDownloadCV = () => {
-    // Open CV hosted in public folder
-    const cvUrl = "/Dennis_Muchai_CV.pdf";
-    window.open(cvUrl, '_blank');
-  };
-
+import { ArrowUpRight, ArrowDown } from "lucide-react";
+import { Link } from "react-router-dom";
+export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-muted to-accent/10 px-4">
-      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
-        <div className="space-y-8 text-center lg:text-left">
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Dennis Muchai
-            </h1>
-            <h2 className="text-xl md:text-2xl text-muted-foreground">
-              Software Engineer | AI-Enabled Full-Stack Developer
-            </h2>
-            <p className="text-lg text-foreground/80 max-w-lg mx-auto lg:mx-0">
-              I build scalable web platforms and AI-powered marketplaces using React, Node.js,
-              Supabase, and PostgreSQL. Strong in AI-assisted development, automation workflows,
-              and shipping practical products that solve real business problems.
-            </p>
-          </div>
-
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="group"
-              onClick={handleContactMe}
-            >
-              <Mail className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              Contact Me
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="group"
-              onClick={handleDownloadCV}
-            >
-              <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-              Download CV
-            </Button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex gap-6 justify-center lg:justify-start">
-            <a 
-              href="https://github.com/dmuchai" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
-              aria-label="GitHub Profile"
-            >
-              <Github className="w-6 h-6 text-foreground" />
-            </a>
-            <a 
-              href="https://linkedin.com/in/dmmuchai" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin className="w-6 h-6 text-foreground" />
-            </a>
-            <button
-              onClick={handleContactMe}
-              className="p-3 rounded-full bg-card border hover:shadow-card transition-all duration-300 hover:scale-110"
-              aria-label="Contact via Email"
-            >
-              <Mail className="w-6 h-6 text-foreground" />
-            </button>
-          </div>
+    <section className="hero shell" id="home">
+      <div className="hero-copy">
+        <p className="eyebrow">
+          <span className="status-dot" /> Practical technology. Business first.
+        </p>
+        <h1>
+          Better systems.
+          <br />
+          <span className="serif-accent">More room to grow.</span>
+        </h1>
+        <p className="hero-description">
+          Custom software and AI automation for growing businesses. Turn manual
+          processes into practical systems for customers, payments, and everyday
+          operations.
+        </p>
+        <div className="actions">
+          <a href="#contact" className="button">
+            Discuss your project <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
+          <a href="#work" className="text-link">
+            Explore selected work <ArrowDown size={17} aria-hidden="true" />
+          </a>
         </div>
-
-        {/* Profile Image */}
-        <div className="relative flex justify-center lg:justify-end">
-          <div className="relative">
-            <div className="w-80 h-80 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-              <img
-                src={profilePhoto}
-                alt="Dennis Muchai - Software Engineer"
-                className="w-full h-full rounded-full object-cover bg-background"
-              />
-            </div>
-            {/* Floating elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/20 rounded-full animate-pulse"></div>
-            <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent/20 rounded-full animate-pulse delay-1000"></div>
-          </div>
-        </div>
+        <p className="hero-byline">
+          Work directly with Dennis Muchai.
+          <br />
+          <span>Director, Cody Digital Ventures Ltd · Nairobi, Kenya</span>
+        </p>
       </div>
+      <Link
+        to="/work/landee"
+        className="hero-product"
+        aria-label="Explore the Landee property management project"
+      >
+        <div className="product-topline">
+          <span className="tiny-dot" />
+          <span>From the workbench</span>
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </div>
+        <div className="product-image">
+          <img
+            src="/work/landee.jpg"
+            alt="Landee public homepage presenting property management software"
+            width="1264"
+            height="712"
+          />
+        </div>
+        <div className="product-caption">
+          <div>
+            <span className="eyebrow">Property operations</span>
+            <strong>Landee</strong>
+          </div>
+          <span>
+            A product in development.
+            <br />
+            Built around real workflows.
+          </span>
+        </div>
+      </Link>
     </section>
   );
-};
-
-export default Hero;
+}
